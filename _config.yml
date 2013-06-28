@@ -1,3 +1,4 @@
 name: Post
 pygments: true
-baseurl: /get-post/
+baseurl: /
+permalink: /:title
