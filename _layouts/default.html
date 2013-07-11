@@ -15,7 +15,7 @@
 			</header>
 	
 			<div id="content">
-				<ul class="posts">{% for post in site.posts %}
+				<ul class="posts">{% for post in site.posts limit:3 %}
 					<li>
 						<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
 						{{ post.excerpt }}
