@@ -1,28 +1,46 @@
 // Typography
+@serif                        : Cambria, Georgia, "Times New Roman", Times, serif;
 @sans-serif                   : "Helvetica Neue", Arial, sans-serif;
 @monospace                    : Monaco, "Courier New", monospace;
+@font-size                    : 16px;
+@line-height                  : 1.4;
 
 
 // Colors
 @blue                         : #0af;
+@blue-dark                    : #092a47;
+@gray-darkest                 : #1d1d1d;
+@gray-darker                  : #373737;
+@gray-dark                    : #646464;
+@gray                         : #8a8a8a;
+@gray-light                   : #b1b1b1;
+@gray-lighter                 : #e5e5e5;
+@gray-lightest                : #fafafa;
 
 
 // Dimensions
-@full-width                   : 42em;
+@full-width                   : 31.875em;
+@half-width                   : @full-width / 2;
+@quarter-width                : @full-width / 4;
 
-
+*
+{
+	.box-sizing(border-box);
+}
 
 body
 {
-	font-family: @sans-serif;
-	line-height: 1.4;
+	font-family: @serif;
+	font-size: @font-size;
+	line-height: @line-height;
+	color: @gray-darker;
 }
 
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl,
 table
 {
-	margin-bottom:1em;
+	margin-bottom: unit( @line-height, em );
 }
 
 ul, ol, dl
@@ -36,8 +54,10 @@ ul, ol, dl
 
 h1
 {
-	font-size: 200%;
+	font-family: @sans-serif;
+	font-size: 150%;
 	font-weight: 200;
+	line-height: @line-height / 1.5;
 
 	a
 	{
@@ -46,13 +66,33 @@ h1
 }
 h2
 {
-	font-size: 150%;
+	font-family: @sans-serif;
+	font-size: 137.5%;
 	font-weight: 200;
+	line-height: @line-height / 1.375;
 
 	a
 	{
 		font-weight: 200;
 	}
+}
+
+h3
+{
+	font-size: 125%;
+	line-height: @line-height / 1.25;
+}
+
+h4
+{
+	font-size: 112.5%;
+	line-height: @line-height / 1.125;
+}
+
+h5, h6
+{
+	font-size: 100%;
+	line-height: @line-height;
 }
 
 a
@@ -64,33 +104,36 @@ a
 	border-bottom: 1px solid;
 }
 
+code
+{
+	padding: 0 .2em;
+	border: 1px solid @gray-lighter;
+	background-color: @gray-lightest;
+	.border-radius( 3px );
+}
 
 
 .container
 {
-	width: 95%;
-	margin: 1em 2.5% 2em;
-	font-size: 115%;
-	text-align: justify;
+	width: 90%;
+	margin: 1em auto 2em;
 }
 
 .header
 {
 	.title
 	{
-//		margin-bottom: 2em;
 		display: inline-block;
 	}
 }
 	
 .meta
 {
-	color: #aaa;
+	color: @gray;
 }
 
 ul.posts
 {
-	margin-bottom: 2em;
 	list-style-type: none;
 
 	h1
@@ -101,11 +144,9 @@ ul.posts
 	
 .footer
 {
-	margin-top: 2em;
-	padding:1em 0;
+	padding: unit( ( 1 / .8 ), em ) 0;
 	font-size: 80%;
-	border-top: 1px solid #eee;
-	color: #666;
+	border-top: 1px solid @gray-light;
 
 	.contact
 	{
@@ -128,16 +169,11 @@ ul.posts
 
 .post
 {
-	ul, ol
-	{
-		margin-left: 1.35em;
-	}
-
 	pre
 	{
 		padding: 0 .4em;
-		border: 1px solid #ddd;
-		background-color: #eef;
+		border: 1px solid @gray-light;
+		background-color: @gray-lightest;
 
 		code
 		{
@@ -146,33 +182,34 @@ ul.posts
 		&.terminal
 		{
 			border: 1px solid #000;
-			color: #fff;
-			background-color: #333;
+			color: @gray-lightest;
+			background-color: @gray-darkest;
 
 			code
 			{
-				background-color: #333;
+				background-color: @gray-darker;
 			}
 		}
 	}
-
-
-	code
-	{
-		padding: 0 .2em;
-		border: 1px solid #ddd;
-		background-color: #eef;
-	}
-
 }
 
-
-@media screen and ( min-width: 42em )
+@media screen and ( min-width: ( @full-width * 1.25 ) )
 {
+	body
+	{
+		font-size: @font-size * 1.125;
+	}
 	.container
 	{
-		max-width: @full-width;
-		margin-right: 1em;
-		margin-left: 1em;
+		width: @full-width;
 	}
+}
+
+@media screen and ( min-width: ( @full-width * 1.75 ) )
+{
+	body
+	{
+		font-size: @font-size * 1.5;
+	}
+
 }
